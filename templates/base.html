@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <!--Including fonts here-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rajdhani&display=swap" rel="stylesheet">
+
+        <!--Including CSS here-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}" />
+
+        <!--Title begins here-->
+        <title> 
+
+            {% if title %}
+                {{title}} - Sushovan's Sanctum
+            {% else %}
+                Sushovan's Sanctum
+            {% endif %}
+        </title>
+    </head>
+
+    <body>
+        {% block content %} {% endblock %}
+    </body>
+</html>

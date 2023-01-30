@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> Pokédex Entry </h2>
+
+<p class="para-1">
+    A dummy Pokedex entry I'm making as a part of my project
+</p>
+
+<table class="pokedex-table">
+    <th>
+        <tr>
+            <td> Index </td>
+            <td> Pokemon </td>
+            <td> Type </td>
+        </tr>
+    </th>
+
+    {%for pokemon in pokemons%}
+        <tr>
+            <td>{{pokemon.index}}</td>
+            <td>{{pokemon.name}}</td>
+            <td>{{pokemon.type1}} {{pokemon.type2}}</td>
+        </tr>
+    {%endfor%}
+</table>
+
+{% endblock content %}
