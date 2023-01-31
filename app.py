@@ -59,22 +59,43 @@ pokemons = [
     },
 ]
 
+# Routes defined here
+
+# Route for homepage
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('homepage.html', title='Homepage')
 
+# Route for about page
 @app.route('/about')
 def about():
     return render_template('about.html', title='About Me')
 
+# Route for contact page
 @app.route('/contact')
 def contact():
     return render_template('contact.html', title='Contact')
+
+# Route for music page
+@app.route('/music')
+def music():
+    return render_template('music.html', title='Music')
+
+# Route for work page
+@app.route('/work')
+def work():
+    return render_template('work.html', title='Work')
+
+# Route for blog page
+@app.route('/blog')
+def blog():
+    return render_template('blog.html', title='Blog')
 
 @app.route('/pokedex')
 def pokelist():
     return render_template('pokedex.html', title="Pokedex", pokemons=pokemons)
 
+# App runs here
 if __name__ == "__main__":
     app.run(use_reloader=True, debug=True)
