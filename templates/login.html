@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+{% extends "base.html" %} 
 
-<html>
-    <head>
-        <title> Login Form </title>
-    </head>
-    <body>
-        <form action="https://localhost:5000/login" method="post">
-            <p>Enter Name: </p>
-            <p><input type="text" name="nm"/></p>
-            <p><input type="submit" name="submit"/></p>
-        </form>
-    </body>
-</html>
+{% block content %}
+    <h2> Login </h2>
+
+    <form action="https://localhost:5000/login" method="post">
+        <p><input type="text" name="nm" placeholder="Email or username"/></p>
+        <p><input type="password" name="pass" placeholder="Password"></p>
+        <p><input type="submit" name="submit"/></p>
+    </form>
+
+    <a href="{{ url_for('register')}}">Don't have an account? Click here</a>
+{% endblock content %}

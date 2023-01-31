@@ -1,63 +1,17 @@
 from flask import Flask, render_template, url_for
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
+db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY'] = 'secretkey'
 
-pokemons = [
-    {
-        'index': '0001',
-        'name': 'Bulbasaur',
-        'type1': 'Grass',
-        'type2': 'Poison'
-    },
-    {
-        'index': '0002',
-        'name': 'Ivysaur',
-        'type1': 'Grass',
-        'type2': 'Poison'
-    },
-    {
-        'index': '0003',
-        'name': 'Venusaur',
-        'type1': 'Grass',
-        'type2': 'Poison'
-    },
-    {
-        'index': '0004',
-        'name': 'Charmander',
-        'type1': 'Fire',
-        'type2': ''
-    },
-    {
-        'index': '0005',
-        'name': 'Charmeleon',
-        'type1': 'Fire',
-        'type2': ''
-    },
-    {
-        'index': '0006',
-        'name': 'Charizard',
-        'type1': 'Fire',
-        'type2': 'Flying'
-    },
-    {
-        'index': '0007',
-        'name': 'Squirtle',
-        'type1': 'Water',
-        'type2': ''
-    },
-    {
-        'index': '0008',
-        'name': 'Wartotle',
-        'type1': 'Water',
-        'type2': ''
-    },
-    {
-        'index': '0009',
-        'name': 'Blastoise',
-        'type1': 'Water',
-        'type2': ''
-    },
-]
+
+class User(db.model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), nullable=False)
+    password = db.Column(db.String(80), nullable=False)
 
 # Routes defined here
 
@@ -67,34 +21,13 @@ pokemons = [
 def home():
     return render_template('homepage.html', title='Homepage')
 
-# Route for about page
-@app.route('/about')
-def about():
-    return render_template('about.html', title='About Me')
+@app.route('/login')
+def login():
+    return render_template('login.html', title='Login')
 
-# Route for contact page
-@app.route('/contact')
-def contact():
-    return render_template('contact.html', title='Contact')
-
-# Route for music page
-@app.route('/music')
-def music():
-    return render_template('music.html', title='Music')
-
-# Route for work page
-@app.route('/work')
-def work():
-    return render_template('work.html', title='Work')
-
-# Route for blog page
-@app.route('/blog')
-def blog():
-    return render_template('blog.html', title='Blog')
-
-@app.route('/pokedex')
-def pokelist():
-    return render_template('pokedex.html', title="Pokedex", pokemons=pokemons)
+@app.route('/register')
+def register():
+    return render_template('register.html', title='Register')
 
 # App runs here
 if __name__ == "__main__":
