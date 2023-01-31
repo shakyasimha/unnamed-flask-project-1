@@ -1,12 +1,11 @@
 body{
-    background-color: aquamarine;
+    background-color: rgb(148, 111, 182);
 }
 
 h2 {
     text-align: center;
     font-family: 'Rajdhani', sans-serif;
 }
-
 table {
     border-collapse: collapse;
 }
@@ -14,6 +13,12 @@ table {
 td, tr {
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+.navbar-1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .pokedex-table {

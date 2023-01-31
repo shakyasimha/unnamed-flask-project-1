@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
@@ -62,7 +62,15 @@ pokemons = [
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('homepage.html', title="Homepage")
+    return render_template('homepage.html', title='Homepage')
+
+@app.route('/about')
+def about():
+    return render_template('about.html', title='About Me')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html', title='Contact')
 
 @app.route('/pokedex')
 def pokelist():

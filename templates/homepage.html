@@ -2,4 +2,9 @@
 
 {% block content %}
     <h2> Welcome to my Homepage </h2>
-{% endblock content %}
+
+    <ul>
+        <li><a href="{{ url_for('about') }}">About Me</a></li>
+        <li><a href="{{ url_for('contact')}}">Contact</a></li>
+    </ul>
+{% endblock %}
